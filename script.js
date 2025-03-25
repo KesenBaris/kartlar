@@ -90,6 +90,25 @@ function createFloatingEmojis(targetId) {
   }
 }
 
+function startAmbientEmojis(targetId) {
+  const container = document.getElementById(targetId);
+  const emojis = ["💖", "🌸", "💫", "🌼", "💗", "✨", "🌷", "🩷"];
+
+  setInterval(() => {
+    const span = document.createElement("span");
+    span.classList.add("floating");
+    span.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    span.style.left = Math.random() * 100 + "%";
+    span.style.top = Math.random() * 100 + "%";
+    span.style.fontSize = Math.random() * 10 + 16 + "px";
+
+    container.appendChild(span);
+
+    setTimeout(() => {
+      span.remove();
+    }, 6000);
+  }, 500); // her 0.5 saniyede bir emoji üret
+}
 
 function showQuestion(card, player) {
   const container = player === "top" ? topOptions : bottomOptions;
@@ -128,3 +147,6 @@ nextTurnBtn.addEventListener("click", () => {
 
 // İlk başlatma
 displayCards();
+startAmbientEmojis("top-float");
+startAmbientEmojis("bottom-float");
+
