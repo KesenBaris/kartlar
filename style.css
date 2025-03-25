@@ -27,13 +27,13 @@ body {
 #top-section {
   transform: rotate(180deg);
   border-bottom: 2px dashed #ccc;
-  background: linear-gradient(to bottom, #ffc1d3 0%, #ffc1d3 60%, #fff0f5 60%, #fff0f5 100%);
+  background: linear-gradient(to bottom, #ffc1d3, #ffd8e4);
 }
-
 
 #bottom-section {
-  background: linear-gradient(to bottom, #d0faff 0%, #d0faff 60%, #f0ffff 60%, #f0ffff 100%);
+  background: linear-gradient(to bottom, #c7f4f9, #e0ffff);
 }
+
 
 
 
@@ -103,15 +103,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 3; /* Butondan da yukarıda */
+  pointer-events: none; /* Tıklamayı engellemez */
 }
 
 #center-line .line {
   flex: 1;
-  height: 2px;
-  background: linear-gradient(to right, #ccc, #eee, #ccc);
-  margin: 0 10px;
+  height: 4px;
+  background: linear-gradient(to right, #aaa, #eee, #aaa);
+  margin: 0 12px;
+  border-radius: 2px;
 }
+
+
+
 
 
 .arrow {
