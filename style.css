@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #d9a7c7, #fffcdc); /* Seçenek 2 */
   height: 100vh;
   display: flex;
@@ -53,12 +53,15 @@ body {
 
 
 .question {
-  font-size: 18px;
-  max-width: 80%;
+  font-size: 20px;
+  font-weight: 600; /* yazıyı kalınlaştırır */
+  max-width: 85%;
   text-align: center;
   margin-top: 10px;
-  color: #444;
+  color: #222;
+  line-height: 1.5;
 }
+
 
 #next-turn {
   position: absolute;
