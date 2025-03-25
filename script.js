@@ -21,7 +21,10 @@ const cards = [
   { image: "assets/17.png", question: "Yorucu bir günün ardından kendini nasıl toparlarsın? Dinlenme biçimin nasıl?" },
   { image: "assets/18.png", question: "Hangi ortamlar seni ruhen iyi hissettirir? Kalabalık mı, sessiz mi, doğa mı?" },
   { image: "assets/19.png", question: "Kendine dair en çok geliştirmek istediğin yön ne?" },
-  { image: "assets/20.png", question: "Bazen içine kapanmak istediğin olur mu? Böyle zamanlarda yanında birinin olması mı yoksa yalnız kalmak mı iyi gelir?" }
+  { image: "assets/20.png", question: "Bazen içine kapanmak istediğin olur mu? Böyle zamanlarda yanında birinin olması mı yoksa yalnız kalmak mı iyi gelir?" },
+  { image: "assets/21.png", question: "Güvendiğin biriyle dertleşmek mi, içinden kendi halletmek mi daha rahatlatır seni?" },
+  { image: "assets/22.png", question: "Seni mutlu eden küçük şeyler nelerdir? Bir çay molası mı, yürüyüş mü, müzik mi?" },
+  { image: "assets/23.png", question: "Zaman zaman karamsarlaştığında seni hayata bağlayan düşünceler ne olur?" }
 ];
 
 
