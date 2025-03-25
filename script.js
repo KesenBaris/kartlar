@@ -69,22 +69,27 @@ function displayCards() {
 }
 function createFloatingEmojis(targetId) {
   const container = document.getElementById(targetId);
-  const emojis = ["💖", "🌸", "💫", "🌼", "💗"];
+  const emojis = ["💖", "🌸", "💫", "🌼", "💗", "✨", "🌷", "💞"];
 
-  for (let i = 0; i < 5; i++) {
+  // Daha fazla emoji üret, örneğin 20
+  for (let i = 0; i < 20; i++) {
     const span = document.createElement("span");
     span.classList.add("floating");
     span.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-    span.style.left = Math.random() * 90 + "%";
-    span.style.bottom = "-20px";
-    span.style.fontSize = Math.random() * 12 + 20 + "px";
+    span.style.left = Math.random() * 100 + "%";
+    span.style.bottom = "-30px";
+    span.style.fontSize = Math.random() * 16 + 18 + "px";
+    span.style.animationDelay = (Math.random() * 2) + "s"; // Dağıtılmış başlama
+
     container.appendChild(span);
 
+    // 6 saniye sonra sil
     setTimeout(() => {
-      container.removeChild(span);
-    }, 4000);
+      span.remove();
+    }, 6000);
   }
 }
+
 
 function showQuestion(card, player) {
   const container = player === "top" ? topOptions : bottomOptions;
