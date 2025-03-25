@@ -3,28 +3,28 @@ let currentTurn = "bottom"; // ilk seninle başlıyor
 
 const cards = [
   { image: "assets/11.png", question: "Seni en çok rahatlatan şey nedir mesela? Sessizlik mi, konuşmak mı?" },
-  { image: "assets/7.png", question: "Kızgın olduğunda içine mi atarsın, yoksa paylaşıp rahatlar mısın?" },
-  { image: "assets/3.png", question: "Kendini nasıl bir karakter olarak tanımlarsın, mesela daha çok planlı biri misin yoksa anı yaşayan?" },
+  { image: "assets/7.png", question: "Bir şey seni çok etkilediğinde veya kızdırdığında bunu hemen paylaşır mısın, yoksa bekletir misin içinde?" },
+  { image: "assets/3.png", question: "Birine güven duyman zaman alır mı? Ne belirler bu süreci?" },
   { image: "assets/19.png", question: "Biri seni kırdığında hemen belli eder misin, yoksa zamanla mı soğursun?" },
   { image: "assets/6.png", question: "Para konularında tutumun nasıldır? Hesap kitap yapar mısın mesela?" },
   { image: "assets/14.png", question: "Bir aile kurmayı hayal ettiğinde gözünün önüne nasıl bir tablo geliyor?" },
-  { image: "assets/16.png", question: "Sence iyi bir anne/baba olmak neyi gerektirir?" },
-  { image: "assets/5.png", question: "Çocuklara nasıl değerler kazandırmak istersin?" },
+  { image: "assets/16.png", question: "Hatalar karşısında seni rahatlatan şey nedir: özür, telafi, zaman?" },
+  { image: "assets/5.png", question: "Sana iyi gelen insanlar genelde nasıl insanlar olur?" },
   { image: "assets/13.png", question: "Bir konuda rahatsız olduğunda doğrudan mı söylersin, yoksa biraz zaman mı geçsin istersin?" },
-  { image: "assets/8.png", question: "Sence tartışmalar, bir ilişkiyi zedeler mi yoksa doğru şekilde yapıldığında geliştirici olabilir mi?" },
+  { image: "assets/8.png", question: "Değer verdiğin biri seni yanlış anladığında bunu düzeltmek için çaba gösterir misin, yoksa “beni tanımalıydı” mı dersin?" },
   { image: "assets/23.png", question: "Sessizlik mi yoksa konuşarak çözüm bulmak mı seni daha çok rahatlatır?" },
   { image: "assets/12.png", question: "Bir problem yaşadığında, çözüm için nasıl bir yol izlemeyi tercih edersin? Hemen konuşmak mı, düşünmek mi?" },
-  { image: "assets/15.png", question: "Sana göre bir ilişkide en çok ne eksik olursa arada uzaklık başlar?" },
-  { image: "assets/1.png", question: "Biri seni yanlış anladığında genelde ne yaparsın? Açıklamaya çalışır mısın yoksa 'anlamıyorsa anlamasın' mı dersin?" },
+  { image: "assets/15.png", question: "Sevilmeyi en çok hangi davranışta hissedersin?" },
+  { image: "assets/1.png", question: "Güvende hissetmek” deyince ne geliyor aklına? Ne sağlar bu duyguyu?" },
   { image: "assets/9.png", question: "Birlikte vakit geçirmek deyince aklına ne gelir? Sence kaliteli zaman nasıl olur?" },
-  { image: "assets/17.png", question: "Kendini hangi zamanlarda daha enerjik hissedersin? Sabahlar mı, akşamlar mı mesela?" },
-  { image: "assets/22.png", question: "Yorucu bir günün ardından kendini nasıl toparlarsın? Dinlenme biçimin nasıl?" },
+  { image: "assets/17.png", question: "Bir tartışmadan sonra nasıl barışılır? Senin gönlünü en çok ne alır?" },
+  { image: "assets/22.png", question: "Birlikte karar alırken dengeyi nasıl kurmak gerekir sence?" },
   { image: "assets/2.png", question: "Hangi ortamlar seni ruhen iyi hissettirir? Kalabalık mı, sessiz mi, doğa mı?" },
-  { image: "assets/10.png", question: "Kendine dair en çok geliştirmek istediğin yön ne?" },
-  { image: "assets/4.png", question: "Bazen içine kapanmak istediğin olur mu? Böyle zamanlarda yanında birinin olması mı yoksa yalnız kalmak mı iyi gelir?" },
+  { image: "assets/10.png", question: "Küs kalmayalım demek mi kolaydır senin için, yoksa biraz zaman mı istersin?" },
+  { image: "assets/4.png", question: "İçini ne sıkar?" },
   { image: "assets/21.png", question: "Güvendiğin biriyle dertleşmek mi, içinden kendi halletmek mi daha rahatlatır seni?" },
   { image: "assets/20.png", question: "Seni mutlu eden küçük şeyler nelerdir? Bir çay molası mı, yürüyüş mü, müzik mi?" },
-  { image: "assets/18.png", question: "Zaman zaman karamsarlaştığında seni hayata bağlayan düşünceler ne olur?" },
+  { image: "assets/18.png", question: "Destek görmek deyince ne anlıyorsun? Yanında durmak mı, çözüm üretmek mi?" },
   { video: "assets/24.mp4", question: "🃏 Joker Kart: Sorunu Sor!", type: "joker" }
 
 ];
@@ -171,11 +171,18 @@ video.play().catch((e) => {
     container.appendChild(img);
   }
 
-  // Kartı stack'ten çıkar
+  const currentStack = player === "top" ? topStack : bottomStack;
+  const updatedStack = currentStack.filter(c => c !== card);
+
+  // Diğer kartı da çıkar (aynı anda gösterilen ama seçilmeyen)
+  // Bu sırada sadece 2 kart gösteriliyordu, onlardan biri zaten card, diğerini bulalım:
+  const otherCard = currentStack.find(c => c !== card);
+  const finalStack = updatedStack.filter(c => c !== otherCard);
+
   if (player === "top") {
-    topStack = topStack.filter(c => c !== card);
+    topStack = finalStack;
   } else {
-    bottomStack = bottomStack.filter(c => c !== card);
+    bottomStack = finalStack;
   }
 }
 
