@@ -90,6 +90,12 @@ body {
   background-color: #ff4f81;
   transform: translate(-50%, -50%) scale(1.05);
 }
+.joker {
+  color: #c2185b;
+  font-weight: bold;
+  font-size: 22px;
+  text-shadow: 0 0 4px rgba(255, 0, 100, 0.3);
+}
 
 .arrow {
   font-size: 28px;
@@ -147,7 +153,35 @@ body {
   }
 }
 
+body.joker-flash {
+  animation: flash-bg 0.8s ease-in-out;
+}
 
+@keyframes flash-bg {
+  0%   { background-color: #fff0f5; }
+  50%  { background-color: #ffebf0; }
+  100% { background-color: inherit; }
+}
+
+.heart {
+  position: absolute;
+  font-size: 24px;
+  animation: heartFloat 4s ease-out forwards;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 100;
+}
+
+@keyframes heartFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) scale(1.5);
+    opacity: 0;
+  }
+}
 
 
 

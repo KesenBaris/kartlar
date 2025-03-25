@@ -24,7 +24,9 @@ const cards = [
   { image: "assets/4.png", question: "Bazen içine kapanmak istediğin olur mu? Böyle zamanlarda yanında birinin olması mı yoksa yalnız kalmak mı iyi gelir?" },
   { image: "assets/21.png", question: "Güvendiğin biriyle dertleşmek mi, içinden kendi halletmek mi daha rahatlatır seni?" },
   { image: "assets/20.png", question: "Seni mutlu eden küçük şeyler nelerdir? Bir çay molası mı, yürüyüş mü, müzik mi?" },
-  { image: "assets/18.png", question: "Zaman zaman karamsarlaştığında seni hayata bağlayan düşünceler ne olur?" }
+  { image: "assets/18.png", question: "Zaman zaman karamsarlaştığında seni hayata bağlayan düşünceler ne olur?" },
+  { video: "assets/24.mp4", question: "🃏 Joker Kart: Sorunu Sor!", type: "joker" }
+
 ];
 
 
@@ -109,6 +111,22 @@ function startAmbientEmojis(targetId) {
     }, 6000);
   }, 3000); // her 0.5 saniyede bir emoji üret
 }
+function launchHearts() {
+  const emojis = ["💖", "💗", "💞", "💘", "💕"];
+  for (let i = 0; i < 20; i++) {
+    const heart = document.createElement("span");
+    heart.classList.add("heart");
+    heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = Math.random() * 80 + "vh";
+    heart.style.fontSize = Math.random() * 12 + 20 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 4000);
+  }
+}
 
 function showQuestion(card, player) {
   const container = player === "top" ? topOptions : bottomOptions;
@@ -116,21 +134,51 @@ function showQuestion(card, player) {
 
   questionDiv.innerText = card.question;
 
-  // Seçilen kart dışında hepsini temizle
-  container.innerHTML = "";
-  const img = document.createElement("img");
-  img.src = card.image;
-  img.alt = "Seçilen Kart";
-  img.classList.add("selected");
-  container.appendChild(img);
+  // Joker mi?
+  if (card.type === "joker") {
+    questionDiv.classList.add("joker");
 
-  // Kendi stack'inden sil
+    // 💡 Joker efektleri
+    document.body.classList.add("joker-flash");
+    setTimeout(() => document.body.classList.remove("joker-flash"), 1000);
+    launchHearts();
+
+    // 🎥 Video göster
+    const video = document.createElement("video");
+    video.src = card.video;
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.style.width = "160px";
+    video.style.height = "160px";
+    video.style.borderRadius = "16px";
+    container.innerHTML = "";
+    container.appendChild(video);
+	// ➕ Bu satırı ekle
+video.play().catch((e) => {
+  console.log("Autoplay engellendi:", e);
+});
+
+  } else {
+    questionDiv.classList.remove("joker");
+
+    const img = document.createElement("img");
+    img.src = card.image;
+    img.alt = "Soru Kartı";
+    img.classList.add("selected");
+    container.innerHTML = "";
+    container.appendChild(img);
+  }
+
+  // Kartı stack'ten çıkar
   if (player === "top") {
     topStack = topStack.filter(c => c !== card);
   } else {
     bottomStack = bottomStack.filter(c => c !== card);
   }
 }
+
 
 // Sıra değiştir
 nextTurnBtn.addEventListener("click", () => {
