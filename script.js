@@ -136,12 +136,6 @@ function showQuestion(card, player) {
 nextTurnBtn.addEventListener("click", () => {
   currentTurn = currentTurn === "top" ? "bottom" : "top";
   displayCards();
-
-  if (currentTurn === "top") {
-    createFloatingEmojis("top-float");
-  } else {
-    createFloatingEmojis("bottom-float");
-  }
 });
 
 
