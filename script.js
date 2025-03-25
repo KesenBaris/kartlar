@@ -107,7 +107,7 @@ function startAmbientEmojis(targetId) {
     setTimeout(() => {
       span.remove();
     }, 6000);
-  }, 500); // her 0.5 saniyede bir emoji üret
+  }, 3000); // her 0.5 saniyede bir emoji üret
 }
 
 function showQuestion(card, player) {
