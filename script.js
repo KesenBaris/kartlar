@@ -2,27 +2,31 @@
 let currentTurn = "bottom"; // ilk seninle başlıyor
 
 const cards = [
-  { image: "assets/1.png", question: "Seni en çok rahatlatan şey nedir mesela? Sessizlik mi, konuşmak mı?" },
-  { image: "assets/2.png", question: "Kızgın olduğunda içine mi atarsın, yoksa paylaşıp rahatlar mısın?" },
-  { image: "assets/3.png", question: "Kendini nasıl bir karakter olarak tanımlarsın, mesela daha çok planlı biri misin yoksa anı yaşayan?" },
+  { image: "assets/6.png", question: "Seni en çok rahatlatan şey nedir mesela? Sessizlik mi, konuşmak mı?" },
+  { image: "assets/21.png", question: "Kızgın olduğunda içine mi atarsın, yoksa paylaşıp rahatlar mısın?" },
+  { image: "assets/8.png", question: "Kendini nasıl bir karakter olarak tanımlarsın, mesela daha çok planlı biri misin yoksa anı yaşayan?" },
   { image: "assets/4.png", question: "Biri seni kırdığında hemen belli eder misin, yoksa zamanla mı soğursun?" },
-  { image: "assets/5.png", question: "Para konularında tutumun nasıldır? Hesap kitap yapar mısın mesela?" },
-  { image: "assets/6.png", question: "Bir aile kurmayı hayal ettiğinde gözünün önüne nasıl bir tablo geliyor?" },
+  { image: "assets/18.png", question: "Para konularında tutumun nasıldır? Hesap kitap yapar mısın mesela?" },
+  { image: "assets/12.png", question: "Bir aile kurmayı hayal ettiğinde gözünün önüne nasıl bir tablo geliyor?" },
   { image: "assets/7.png", question: "Sence iyi bir anne/baba olmak neyi gerektirir?" },
-  { image: "assets/8.png", question: "Çocuklara nasıl değerler kazandırmak istersin?" },
-  { image: "assets/9.png", question: "Bir konuda rahatsız olduğunda doğrudan mı söylersin, yoksa biraz zaman mı geçsin istersin?" },
-  { image: "assets/10.png", question: "Sence tartışmalar, bir ilişkiyi zedeler mi yoksa doğru şekilde yapıldığında geliştirici olabilir mi?" },
-  { image: "assets/11.png", question: "Sessizlik mi yoksa konuşarak çözüm bulmak mı seni daha çok rahatlatır?" },
-  { image: "assets/12.png", question: "Bir problem yaşadığımızda, çözüm için nasıl bir yol izlemeyi tercih edersin? Hemen konuşmak mı, düşünmek mi?" },
-  { image: "assets/13.png", question: "Sana göre bir ilişkide en çok ne eksik olursa arada uzaklık başlar?" },
-  { image: "assets/14.png", question: "Biri seni yanlış anladığında genelde ne yaparsın? Açıklamaya çalışır mısın yoksa 'anlamıyorsa anlamasın' mı dersin?" },
-  { image: "assets/15.png", question: "Birlikte vakit geçirmek deyince aklına ne gelir? Sence kaliteli zaman nasıl olur?" },
+  { image: "assets/1.png", question: "Çocuklara nasıl değerler kazandırmak istersin?" },
+  { image: "assets/14.png", question: "Bir konuda rahatsız olduğunda doğrudan mı söylersin, yoksa biraz zaman mı geçsin istersin?" },
+  { image: "assets/9.png", question: "Sence tartışmalar, bir ilişkiyi zedeler mi yoksa doğru şekilde yapıldığında geliştirici olabilir mi?" },
+  { image: "assets/2.png", question: "Sessizlik mi yoksa konuşarak çözüm bulmak mı seni daha çok rahatlatır?" },
+  { image: "assets/11.png", question: "Bir problem yaşadığımızda, çözüm için nasıl bir yol izlemeyi tercih edersin? Hemen konuşmak mı, düşünmek mi?" },
+  { image: "assets/10.png", question: "Sana göre bir ilişkide en çok ne eksik olursa arada uzaklık başlar?" },
+  { image: "assets/19.png", question: "Biri seni yanlış anladığında genelde ne yaparsın? Açıklamaya çalışır mısın yoksa 'anlamıyorsa anlamasın' mı dersin?" },
+  { image: "assets/5.png", question: "Birlikte vakit geçirmek deyince aklına ne gelir? Sence kaliteli zaman nasıl olur?" },
   { image: "assets/16.png", question: "Kendini hangi zamanlarda daha enerjik hissedersin? Sabahlar mı, akşamlar mı mesela?" },
-  { image: "assets/17.png", question: "Yorucu bir günün ardından kendini nasıl toparlarsın? Dinlenme biçimin nasıl?" },
-  { image: "assets/18.png", question: "Hangi ortamlar seni ruhen iyi hissettirir? Kalabalık mı, sessiz mi, doğa mı?" },
-  { image: "assets/19.png", question: "Kendine dair en çok geliştirmek istediğin yön ne?" },
-  { image: "assets/20.png", question: "Bazen içine kapanmak istediğin olur mu? Böyle zamanlarda yanında birinin olması mı yoksa yalnız kalmak mı iyi gelir?" }
+  { image: "assets/3.png", question: "Yorucu bir günün ardından kendini nasıl toparlarsın? Dinlenme biçimin nasıl?" },
+  { image: "assets/17.png", question: "Hangi ortamlar seni ruhen iyi hissettirir? Kalabalık mı, sessiz mi, doğa mı?" },
+  { image: "assets/13.png", question: "Kendine dair en çok geliştirmek istediğin yön ne?" },
+  { image: "assets/22.png", question: "Bazen içine kapanmak istediğin olur mu? Böyle zamanlarda yanında birinin olması mı yoksa yalnız kalmak mı iyi gelir?" },
+  { image: "assets/15.png", question: "Güvendiğin biriyle dertleşmek mi, içinden kendi halletmek mi daha rahatlatır seni?" },
+  { image: "assets/23.png", question: "Seni mutlu eden küçük şeyler nelerdir? Bir çay molası mı, yürüyüş mü, müzik mi?" },
+  { image: "assets/20.png", question: "Zaman zaman karamsarlaştığında seni hayata bağlayan düşünceler ne olur?" }
 ];
+
 
 
 let topStack = [...cards];
